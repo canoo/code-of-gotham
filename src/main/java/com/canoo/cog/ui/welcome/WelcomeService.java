@@ -48,7 +48,7 @@ public class WelcomeService {
         WelcomeController controller = loader.getController();
         controller.init();
         Scene welcomeScene = new Scene(welcomePane);
-
+        
         // Initialize JavaFx Welcome Stage
         stage.setTitle("Code of Gotham");
         stage.setScene(welcomeScene);

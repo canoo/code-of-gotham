@@ -14,7 +14,7 @@
 <?import javafx.scene.text.*?>
 <?import javafx.scene.text.Font?>
 
-<StackPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+<StackPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" style="-fx-background-color: darkgrey;">
   <children>
     <HBox spacing="8.0">
       <VBox alignment="TOP_LEFT" spacing="2.0">
@@ -32,6 +32,9 @@
               <Font size="16.0" />
             </font>
           </Label>
+                  
+                 
+                  
 					<RadioButton fx:id="cog" text="gotham" textFill="WHITE">
                   <toggleGroup>
                      <ToggleGroup fx:id="styleGroup" />
@@ -40,6 +43,7 @@
 					<RadioButton fx:id="tc" text="test coverage" textFill="WHITE" toggleGroup="$styleGroup" />
 					<RadioButton fx:id="td" text="technical debt" textFill="WHITE" toggleGroup="$styleGroup" />
 					<RadioButton fx:id="tdpl" text="t.d. per line" textFill="WHITE" toggleGroup="$styleGroup" />
+		
         </children>
       </VBox>
       <padding>

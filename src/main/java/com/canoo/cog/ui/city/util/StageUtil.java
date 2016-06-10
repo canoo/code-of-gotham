@@ -23,6 +23,25 @@ package com.canoo.cog.ui.city.util;
 import java.io.IOException;
 import java.util.List;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.scene.Group;
+import javafx.scene.PerspectiveCamera;
+import javafx.scene.Scene;
+import javafx.scene.SceneAntialiasing;
+import javafx.scene.SubScene;
+import javafx.scene.input.MouseButton;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
+import javafx.scene.transform.Rotate;
+import javafx.util.Duration;
+
 import com.canoo.cog.solver.CityNode;
 import com.canoo.cog.ui.city.CityToolBarService;
 import com.canoo.cog.ui.city.model.Building;
@@ -30,25 +49,6 @@ import com.canoo.cog.ui.city.model.City;
 import com.canoo.cog.ui.city.model.Hood;
 import com.canoo.cog.ui.city.model.style.CityStyle;
 import com.canoo.cog.ui.city.model.text.Info;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.geometry.Pos;
-import javafx.scene.Group;
-import javafx.scene.PerspectiveCamera;
-import javafx.scene.Scene;
-import javafx.scene.SceneAntialiasing;
-import javafx.scene.SubScene;
-import javafx.scene.input.MouseButton;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
-import javafx.scene.transform.Rotate;
-import javafx.util.Duration;
 
 public class StageUtil {
 
@@ -261,23 +261,19 @@ public class StageUtil {
         root.getChildren().add(city);
 
         // 2D
-        StackPane stackpane = new StackPane();
+        BorderPane pane = new BorderPane();
         Pane toolBar = null;
 		try {
 			toolBar = new CityToolBarService().load(cityName);
-//            toolBar.setMaxWidth(TOOLBAR_WIDTH);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-        stackpane.getChildren().addAll(subScene, toolBar);
-        stackpane.setAlignment(Pos.TOP_LEFT);
-
-
-        Scene scene = new Scene(stackpane, SCENE_WIDTH, SCENE_HEIGHT);
-
+        pane.setBottom(subScene);
+        pane.setTop(toolBar);
+        
+        Scene scene = new Scene(pane, SCENE_WIDTH, SCENE_HEIGHT);
         subScene.heightProperty().bind(scene.heightProperty());
-        subScene.widthProperty().bind(scene.widthProperty());
-
+        subScene.widthProperty().bind(scene.widthProperty());      
         return scene;
     }
 
