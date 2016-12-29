@@ -99,7 +99,7 @@ public class SonarService {
             String encoding = new String(Base64.encodeBase64((userName + ":" + password).getBytes()));
 
             if (isProxyUsed()) {
-                Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("webproxy.balgroupit.com", 3128));
+                Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(proxyHost, proxyPort));
                 authPropertyKey = "Proxy-Authorization";
                 connection = (HttpURLConnection) url.openConnection(proxy);
             } else {
